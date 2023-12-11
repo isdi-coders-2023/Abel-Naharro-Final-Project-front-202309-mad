@@ -1,0 +1,11 @@
+@import '../../vars';
+
+.list-offers {
+  background: $white-three;
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+}
