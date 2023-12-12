@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './header.scss';
 
 export function Header() {
@@ -12,21 +13,17 @@ export function Header() {
       <nav className="header-nav">
         <ul>
           <li>
-            <a href="#">Sign Up</a>
+            <Link to="/sign-up">Sign Up</Link>
           </li>
           <li>
-            <a href="#">Sign In</a>
+            <Link to="/sign-in">Sign In</Link>
           </li>
           <li>
-            <a href="#" className="button-share">
+            <Link className="button-share" to="/sign-in">
               + Share
-            </a>
+            </Link>
           </li>
         </ul>
-        {/* <form>
-          <input type="search" name="q" placeholder="Buscar" />
-          <input type="submit" defaultValue="¡Vamos!" />
-        </form> */}
       </nav>
     </header>
   );
