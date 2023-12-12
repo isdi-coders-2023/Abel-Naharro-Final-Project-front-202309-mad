@@ -2,7 +2,7 @@ import './subHeader.scss';
 
 export function SubHeaders() {
   return (
-    <section className="sub-header">
+    <section className="sub-header" role="tabpanel">
       <div className="control-scroll-category">
         <i className="fa-solid fa-angle-left"></i>
       </div>

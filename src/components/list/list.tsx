@@ -3,7 +3,7 @@ import './list.scss';
 
 export function List() {
   return (
-    <section className="list-offers">
+    <section className="list-offers" role="main">
       <Offer />
     </section>
   );
