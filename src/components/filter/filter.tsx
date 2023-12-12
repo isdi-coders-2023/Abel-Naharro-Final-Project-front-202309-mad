@@ -2,7 +2,7 @@ import './filter.scss';
 
 export function Filter() {
   return (
-    <section className="filter">
+    <section className="filter" role="search">
       <div className="container">
         <h2>Filter</h2>
         <ul>

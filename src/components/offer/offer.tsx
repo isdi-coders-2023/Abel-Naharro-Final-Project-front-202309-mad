@@ -2,7 +2,7 @@ import './offer.scss';
 
 export function Offer() {
   return (
-    <div className="card-offer">
+    <section className="card-offer" role="contentinfo">
       <div className="content-image">
         <img src="https://placehold.co/200x200/webp" alt="offer image" />
       </div>
@@ -44,6 +44,6 @@ export function Offer() {
           </a>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
