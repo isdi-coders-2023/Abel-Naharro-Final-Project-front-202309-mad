@@ -1,6 +1,6 @@
-import './subHeader.scss';
+import './subheader.scss';
 
-export function SubHeaders() {
+export function Subheader() {
   return (
     <section className="sub-header" role="tabpanel">
       <div className="control-scroll-category">
