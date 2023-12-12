@@ -1,4 +1,4 @@
-import './subheader.scss';
+import './category.header.scss';
 
 export function CategoryHeader() {
   return (
