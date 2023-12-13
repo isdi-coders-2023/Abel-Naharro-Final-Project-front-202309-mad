@@ -8,7 +8,7 @@ export function Offer() {
       </div>
       <div className="content-info">
         <div className="content-info-header">
-          <div className="bottons-vote">
+          <div className="buttons-vote">
             <button className="btn-vote-down" title="vote-down">
               <i className="fa-regular fa-thumbs-down"></i>
             </button>

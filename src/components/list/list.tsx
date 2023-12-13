@@ -5,6 +5,8 @@ export function List() {
   return (
     <section className="list-offers" role="main">
       <Offer />
+      <Offer />
+      <Offer />
     </section>
   );
 }
