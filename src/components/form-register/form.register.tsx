@@ -27,7 +27,10 @@ export function FormRegister() {
 
     setIsRegister(true);
     register(data);
-    navigate('/');
+
+    setInterval(() => {
+      navigate('/sign-in');
+    }, 2000);
   };
 
   console.log(isRegister);
@@ -52,7 +55,15 @@ export function FormRegister() {
             <p>Already have an account?</p>
             <Link to="/sign-in">Sign In</Link>
           </div>
-          <div>
+
+          {isRegister ? (
+            <div className="alert-confirm-register">
+              <p>You have successfully registered! </p>
+            </div>
+          ) : (
+            ''
+          )}
+          <div className="register-container">
             <input type="submit" value="Sign Up" />
           </div>
         </form>

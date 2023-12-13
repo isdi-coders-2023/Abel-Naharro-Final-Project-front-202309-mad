@@ -60,6 +60,15 @@
           width: 100%;
         }
       }
+
+      .login-container {
+        width: 100%;
+
+        input[type='submit']:hover {
+          background: $orange-hover;
+          box-shadow: 0 0 0 1px var($orange-hover);
+        }
+      }
     }
   }
 }
