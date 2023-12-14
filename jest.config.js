@@ -8,5 +8,5 @@ export default {
   moduleNameMapper: {
     '\\.(css|scss)$': 'identity-obj-proxy',
   },
-  coveragePathIgnorePatterns: ['main.tsx, vite-env.d.ts'],
+  coveragePathIgnorePatterns: ['main.tsx, vite-env.d.ts', 'src/config.ts'],
 };

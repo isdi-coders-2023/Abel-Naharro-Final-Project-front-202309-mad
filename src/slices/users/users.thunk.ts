@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { LoginResponse } from '../types/login.response';
-import { LoginUser } from '../model/user';
-import { UsersRepo } from '../services/api.repo.users';
-import { LocalStorage } from '../services/local.storage';
+import { LoginResponse } from '../../types/login.response';
+import { LoginUser } from '../../model/user';
+import { UsersRepo } from '../../services/api.repo.users';
+import { LocalStorage } from '../../services/local.storage';
 
 export const loginThunk = createAsyncThunk<
   LoginResponse,

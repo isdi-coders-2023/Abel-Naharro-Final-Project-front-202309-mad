@@ -1,4 +1,4 @@
-import { SyntheticEvent, useState } from 'react';
+import { SyntheticEvent, useEffect, useState } from 'react';
 import './form.login.scss';
 import { LoginUser } from '../../model/user';
 import { useUsers } from '../../hooks/use.users';
@@ -8,6 +8,12 @@ export function FormLogin() {
   const [hasLogin, setHasLogin] = useState(false);
   const { login, loggedUser } = useUsers();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (loggedUser) {
+      navigate('/');
+    }
+  }, [loggedUser]);
 
   const handleSubmit = (event: SyntheticEvent) => {
     event.preventDefault();
@@ -25,8 +31,6 @@ export function FormLogin() {
 
     login(data);
     setHasLogin(true);
-
-    if (hasLogin) navigate('/');
 
     console.log(hasLogin);
     console.log(loggedUser);

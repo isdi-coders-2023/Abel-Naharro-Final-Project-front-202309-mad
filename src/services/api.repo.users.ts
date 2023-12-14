@@ -4,6 +4,7 @@ import { LoginResponse } from '../types/login.response';
 
 export class UsersRepo {
   apiUrl = serverUrl + '/user';
+
   async createUser(newUser: Partial<User>): Promise<User> {
     const url = this.apiUrl + '/register';
     const response = await fetch(url, {

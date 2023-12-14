@@ -1,37 +1,39 @@
-import { Link } from 'react-router-dom';
-import { Offer } from '../../model/offer';
-import './offer.scss';
+import { useParams } from 'react-router-dom';
+// import { Offer } from '../../model/offer';
+import './offer.details.scss';
 
-type Props = {
-  offerItem: Offer;
-};
+// type Props = {
+//   offerItem: Offer;
+// };
 
-export function OfferCard({ offerItem }: Props) {
-  const date = new Date(offerItem.createdAt);
-  const formattedDateOfCreated = date.toLocaleString('es-ES', {
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric',
-  });
+export function OfferDetails() {
+  const { id } = useParams();
+  console.log(id);
 
-  const differencePrice = offerItem.offerPrice - offerItem.regularPrice;
-  const percentageDiscount = (differencePrice / offerItem.regularPrice) * 100;
+  // export function OfferCard({ offerItem }: Props) {
+  // const date = new Date(offerItem.createdAt);
+  // const formattedDateOfCreated = date.toLocaleString('es-ES', {
+  //   day: '2-digit',
+  //   month: '2-digit',
+  //   year: 'numeric',
+  // });
 
-  const urlOffer = new URL(offerItem.offerURL);
-  console.log(urlOffer);
-  const hostNameOffer = urlOffer.host;
-  const cleanHostNameOffer = hostNameOffer.replace('www.', '');
+  // const differencePrice = offerItem.offerPrice - offerItem.regularPrice;
+  // const percentageDiscount = (differencePrice / offerItem.regularPrice) * 100;
 
-  let description = offerItem.description;
-  if (description.length > 150) {
-    description = description.substring(0, 150) + '...';
-  }
+  // const urlOffer = new URL(offerItem.offerURL);
+  // const hostNameOffer = urlOffer.host;
+  // const cleanHostNameOffer = hostNameOffer.replace('www.', '');
 
-  console.log(offerItem.author.userName);
+  // let description = offerItem.description;
+  // if (description.length > 150) {
+  //   description = description.substring(0, 150) + '...';
+  // }
 
   return (
     <section className="card-offer" role="contentinfo">
-      <div className="content-image">
+      Details {id}
+      {/* <div className="content-image">
         <img src={offerItem.image.cloudinaryURL} alt="offer image" />
       </div>
       <div className="content-info">
@@ -62,14 +64,14 @@ export function OfferCard({ offerItem }: Props) {
         <div className="description">{description}</div>
         <div className="author">
           <img src="https://placehold.co/25x25/webp" alt="author" />
-          <p>{offerItem.author.userName}</p>
+          <p>{offerItem.author.userName} - pendiente</p>
         </div>
         <div className="offer-link">
-          <Link className="button-share" to={`offer/` + offerItem.id}>
+          <a href="#">
             Go to Offer <i className="fa-solid fa-up-right-from-square"></i>
-          </Link>
+          </a>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 }

@@ -36,7 +36,7 @@ export function Header() {
               {loggedUser!.userName}
             </li>
             <li>
-              <Link className="button-share" to="/">
+              <Link className="button-share" to="/share">
                 + Share
               </Link>
             </li>

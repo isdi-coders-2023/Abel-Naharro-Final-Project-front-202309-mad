@@ -1,12 +1,12 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { User } from '../model/user';
-import { LoginResponse } from '../types/login.response';
+import { User } from '../../model/user';
+import { LoginResponse } from '../../types/login.response';
 import { loginThunk, loginTokenThunk } from './users.thunk';
 
 type LoginState = 'idle' | 'logging' | 'error';
 
 export type UsersState = {
-  loggedUser: User | null; // Sería currentUser
+  loggedUser: User | null;
   loginLoadState: LoginState;
   token: string;
 };
