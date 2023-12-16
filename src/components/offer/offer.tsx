@@ -15,7 +15,10 @@ export function OfferCard({ offerItem }: Props) {
   });
 
   const differencePrice = offerItem.offerPrice - offerItem.regularPrice;
-  const percentageDiscount = (differencePrice / offerItem.regularPrice) * 100;
+  const percentageDiscount = (
+    (differencePrice / offerItem.regularPrice) *
+    100
+  ).toFixed(0);
 
   const urlOffer = new URL(offerItem.offerURL);
   const hostNameOffer = urlOffer.host;
@@ -58,7 +61,8 @@ export function OfferCard({ offerItem }: Props) {
         </div>
         <div className="description">{description}</div>
         <div className="author">
-          <img src="https://placehold.co/25x25/webp" alt="author" />
+          {/* <img src="https://placehold.co/25x25/webp" alt="author" /> */}
+          <i className="fa-solid fa-user-tag"></i>
           <p>{offerItem.author.userName}</p>
         </div>
         <div className="offer-link">
