@@ -27,13 +27,8 @@ export function FormLogin() {
       ).value,
     } as LoginUser;
 
-    console.log(data);
-
     login(data);
     setHasLogin(true);
-
-    console.log(hasLogin);
-    console.log(loggedUser);
   };
 
   return (

@@ -15,7 +15,11 @@ export function CategoryHeader() {
 
   return (
     <section className="sub-header" role="tabpanel">
-      <div className="control-scroll-category" onClick={handleClickLeft}>
+      <div
+        className="control-scroll-category"
+        role="button"
+        onClick={handleClickLeft}
+      >
         <i className="fa-solid fa-angle-left"></i>
       </div>
       <ul className="category-list">

@@ -23,8 +23,6 @@ export function FormRegister() {
         .value,
     } as Partial<User>;
 
-    console.log(data);
-
     setIsRegister(true);
     register(data);
 
@@ -33,7 +31,6 @@ export function FormRegister() {
     }, 2000);
   };
 
-  console.log(isRegister);
   return (
     <section className="section-register">
       <div className="register-card">

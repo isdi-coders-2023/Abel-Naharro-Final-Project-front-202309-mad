@@ -18,7 +18,6 @@ export function OfferCard({ offerItem }: Props) {
   const percentageDiscount = (differencePrice / offerItem.regularPrice) * 100;
 
   const urlOffer = new URL(offerItem.offerURL);
-  console.log(urlOffer);
   const hostNameOffer = urlOffer.host;
   const cleanHostNameOffer = hostNameOffer.replace('www.', '');
 
@@ -26,8 +25,6 @@ export function OfferCard({ offerItem }: Props) {
   if (description.length > 150) {
     description = description.substring(0, 150) + '...';
   }
-
-  console.log(offerItem.author.userName);
 
   return (
     <section className="card-offer" role="contentinfo">
