@@ -6,6 +6,7 @@ const LoginPage = lazy(() => import('../pages/login/login'));
 const RegisterPage = lazy(() => import('../pages/register/register'));
 const CreateOfferPage = lazy(() => import('../pages/create/create'));
 const OfferPage = lazy(() => import('../pages/details/details'));
+const ErrorPage = lazy(() => import('../pages/error/error'));
 
 export function AppRoutes() {
   return (
@@ -19,6 +20,7 @@ export function AppRoutes() {
           element={<CreateOfferPage></CreateOfferPage>}
         ></Route>
         <Route path="/offer/:id" element={<OfferPage></OfferPage>}></Route>
+        <Route path="*" element={<ErrorPage></ErrorPage>}></Route>
       </Routes>
     </Suspense>
   );
