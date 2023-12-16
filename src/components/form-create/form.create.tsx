@@ -1,35 +1,24 @@
 import { SyntheticEvent } from 'react';
 import './form.create.scss';
-// import { LoginUser } from '../../model/user';
-// import { useUsers } from '../../hooks/use.users';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useOffers } from '../../hooks/use.offers';
 
 export function FormCreate() {
   // const [hasLogin, setHasLogin] = useState(false);
   // const { login, loggedUser } = useUsers();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
+
+  const { createOffer } = useOffers();
 
   const handleSubmit = (event: SyntheticEvent) => {
     event.preventDefault();
 
-    // const formLoginElement = event.target as HTMLFormElement;
-    // const data = {
-    //   email: (formLoginElement.elements.namedItem('email') as HTMLInputElement)
-    //     .value,
-    //   password: (
-    //     formLoginElement.elements.namedItem('password') as HTMLInputElement
-    //   ).value,
-    // } as LoginUser;
+    const form = event.target as HTMLFormElement;
+    const formData = new FormData(form);
 
-    // console.log(data);
+    createOffer(formData);
 
-    // login(data);
-    // setHasLogin(true);
-
-    // if (hasLogin) navigate('/');
-
-    // console.log(hasLogin);
-    // console.log(loggedUser);
+    navigate('/');
   };
 
   return (
@@ -37,16 +26,61 @@ export function FormCreate() {
       <div className="create-card">
         <h2>Share offer</h2>
         <form name="create-form" onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="image-file">Image</label>
+            <input type="file" id="image-file" name="image" required />
+          </div>
+          <div>
+            <label htmlFor="title">Title</label>
+            <input type="text" id="title" name="title" required />
+          </div>
+          <div>
+            <label htmlFor="description">Description</label>
+            <input type="text" id="description" name="description" required />
+          </div>
+          <div>
+            <label htmlFor="regular-price">Regular price</label>
+            <input
+              type="number"
+              id="regular-price"
+              name="regularPrice"
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="offer-price">Offer price</label>
+            <input type="number" id="offer-price" name="offerPrice" required />
+          </div>
           {/* <div>
-            <label htmlFor="email">Email</label>
-            <input type="email" id="email" name="email" required />
+            <label htmlFor="coupon-needed">Coupon needed?</label>
+            <input type="checkbox" id="coupon-needed" name="coupon-needed" />
+          </div> */}
+          <div>
+            <label htmlFor="coupon">Coupon</label>
+            <input type="text" id="coupon" name="coupon" required />
           </div>
           <div>
-            <label htmlFor="password">Password</label>
-            <input type="password" id="password" name="password" required />
+            <label htmlFor="url">Url offer</label>
+            <input type="text" id="url" name="offerURL" required />
           </div>
           <div>
-            <p>Forgot your password?</p>
+            <label htmlFor="category">Category</label>
+            <select name="category" id="category">
+              <option value="mobile">Mobiles</option>
+              <option value="tablets">Tablets</option>
+              <option value="computers">Computers</option>
+              <option value="games">Games</option>
+              <option value="digital">Digital content</option>
+              <option value="others">Others</option>
+            </select>
+          </div>
+          {/* <div>
+            <label htmlFor="date-to-start">Date start offer</label>
+            <input type="date" id="date-to-start" name="dateToStart" required />
+          </div>
+          <div>
+            <label htmlFor="date-to-end">Date end offer</label>
+            <input type="date" id="date-to-end" name="dateToEnd" required />
           </div> */}
           <div className="share-container">
             <input type="submit" value="Share Offer" />
