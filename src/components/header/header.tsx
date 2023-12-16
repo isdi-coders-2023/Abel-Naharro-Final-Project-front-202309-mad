@@ -32,11 +32,15 @@ export function Header() {
           <ul>
             <li className="info-user">
               {/* <Link to="/sign-in"></Link> */}
-              <img src="https://placehold.co/25x25/webp" title="Icono user" />
-              {loggedUser!.userName}
+              {/* <img src="https://placehold.co/25x25/webp" title="Icono user" /> */}
+
+              <Link to="/my-profile">
+                <i className="fa-regular fa-user"></i>
+                {loggedUser!.userName}
+              </Link>
             </li>
             <li>
-              <Link className="button-share" to="/share">
+              <Link className="button-share" to="/offer/share">
                 + Share
               </Link>
             </li>

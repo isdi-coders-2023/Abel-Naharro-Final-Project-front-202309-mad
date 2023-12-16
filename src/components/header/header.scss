@@ -76,6 +76,9 @@ header {
         gap: 0.5rem;
         font-family: $roboto;
         color: $white-base;
+        i {
+          margin-right: 0.5rem;
+        }
         img {
           border-radius: 1rem;
         }
