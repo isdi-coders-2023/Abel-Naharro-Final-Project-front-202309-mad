@@ -1,11 +1,11 @@
-import { SyntheticEvent, useEffect, useState } from 'react';
+import { SyntheticEvent, useEffect } from 'react';
 import './form.login.scss';
 import { LoginUser } from '../../model/user';
 import { useUsers } from '../../hooks/use.users';
 import { useNavigate } from 'react-router-dom';
 
 export function FormLogin() {
-  const [hasLogin, setHasLogin] = useState(false);
+  //const [hasLogin, setHasLogin] = useState(false);
   const { login, loggedUser } = useUsers();
   const navigate = useNavigate();
 
@@ -28,7 +28,7 @@ export function FormLogin() {
     } as LoginUser;
 
     login(data);
-    setHasLogin(true);
+    //setHasLogin(true);
   };
 
   return (
