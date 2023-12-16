@@ -5,9 +5,15 @@ import { AppRoutes } from '../router/app.routes.tsx';
 
 import { useEffect } from 'react';
 import { useOffers } from '../../hooks/use.offers.tsx';
+import { useUsers } from '../../hooks/use.users.tsx';
 
 function App() {
+  const { loginWithToken } = useUsers();
   const { loadOffers } = useOffers();
+
+  useEffect(() => {
+    loginWithToken();
+  }, []);
 
   useEffect(() => {
     loadOffers();
