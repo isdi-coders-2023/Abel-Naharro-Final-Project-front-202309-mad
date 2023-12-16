@@ -15,13 +15,14 @@ export function CategoryHeader() {
 
   return (
     <section className="sub-header" role="tabpanel">
-      <div
+      <button
         className="control-scroll-category"
         role="button"
         onClick={handleClickLeft}
+        title="Scroll to left"
       >
         <i className="fa-solid fa-angle-left"></i>
-      </div>
+      </button>
       <ul className="category-list">
         <li>
           <a href="#">
@@ -44,9 +45,13 @@ export function CategoryHeader() {
           </a>
         </li>
       </ul>
-      <div className="control-scroll-category" onClick={handleClickRight}>
+      <button
+        className="control-scroll-category"
+        onClick={handleClickRight}
+        title="Scroll to right"
+      >
         <i className="fa-solid fa-angle-right"></i>
-      </div>
+      </button>
     </section>
   );
 }

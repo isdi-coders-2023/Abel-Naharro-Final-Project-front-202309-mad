@@ -2,7 +2,7 @@
 
 .sub-header {
   background: $grey-four;
-  padding: 1.5rem;
+  padding: 1.5rem 0rem;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -11,6 +11,9 @@
   .control-scroll-category {
     color: $white-base;
     cursor: pointer;
+    width: 3rem;
+    height: 3rem;
+    background: none;
   }
 
   ul {
@@ -60,7 +63,7 @@
 
 @media (max-width: 715px) {
   .sub-header {
-    padding: 0.1rem 1.5rem;
+    padding: 0.1rem 0rem;
     .category-list {
       li {
         a {
