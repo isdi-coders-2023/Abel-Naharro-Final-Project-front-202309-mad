@@ -178,6 +178,20 @@
           padding: 0.3rem 2rem;
         }
       }
+      .info-offer-not-login {
+        width: 100%;
+        max-width: 15rem;
+        border: 1px solid #ff9300;
+        border-radius: 1rem;
+        padding: 1rem;
+        background: #ff9b0070;
+        font-size: 0.8rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        font-weight: 600;
+      }
     }
   }
 }

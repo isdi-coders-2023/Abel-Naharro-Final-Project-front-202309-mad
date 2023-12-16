@@ -3,14 +3,14 @@ import './offer.details.scss';
 import { useOffers } from '../../hooks/use.offers';
 import { Offer } from '../../model/offer';
 import { Loading } from '../loading/loading';
+import { useUsers } from '../../hooks/use.users';
 
 export function OfferDetails() {
   const { id } = useParams();
   const { offers } = useOffers();
+  const { loggedUser } = useUsers();
 
   if (offers.length === 0) {
-    // console.log(loadExternalOffer(id!));
-    // return <>Loading</>;
     return <Loading />;
   }
 
@@ -24,7 +24,10 @@ export function OfferDetails() {
   });
 
   const differencePrice = offerItem.offerPrice - offerItem.regularPrice;
-  const percentageDiscount = (differencePrice / offerItem.regularPrice) * 100;
+  const percentageDiscount = (
+    (differencePrice / offerItem.regularPrice) *
+    100
+  ).toFixed(0);
 
   const urlOffer = new URL(offerItem.offerURL);
   const hostNameOffer = urlOffer.host;
@@ -34,6 +37,8 @@ export function OfferDetails() {
   if (description.length > 150) {
     description = description.substring(0, 150) + '...';
   }
+  console.log('OFFER: ', offerItem);
+  console.log(offerItem.author);
 
   return (
     <>
@@ -70,16 +75,29 @@ export function OfferDetails() {
               </div>
               <div className="description">{description}</div>
               <div className="author">
-                <img src="https://placehold.co/25x25/webp" alt="author" />
+                {/* <img src="https://placehold.co/25x25/webp" alt="author" /> */}
+                <i className="fa-solid fa-user-tag"></i>
                 <p>{offerItem.author.userName}</p>
               </div>
-              <div className="offer-link">
-                <a href={offerItem.offerURL} target="_blank" title="Link offer">
-                  Oppen Offer
-                </a>
-              </div>
-              {offerItem.isCoupon && (
-                <div className="offer-coupon">{offerItem.coupon}</div>
+              {loggedUser ? (
+                <>
+                  <div className="offer-link">
+                    <a
+                      href={offerItem.offerURL}
+                      target="_blank"
+                      title="Link offer"
+                    >
+                      Open Offer
+                    </a>
+                  </div>
+                  {offerItem.isCoupon && (
+                    <div className="offer-coupon">{offerItem.coupon}</div>
+                  )}
+                </>
+              ) : (
+                <div className="info-offer-not-login">
+                  Sign in to see the offer
+                </div>
               )}
             </div>
           </div>
