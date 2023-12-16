@@ -3,13 +3,36 @@ import { Offer } from '../model/offer';
 
 export class OffersRepo {
   apiUrl: string;
+  token: string;
 
-  constructor(public token: string) {
+  constructor(token: string) {
+    this.token = token;
     this.apiUrl = serverUrl + '/offer';
+  }
+
+  async getOfferById(id: string): Promise<Offer> {
+    console.log('getOfferById', id);
+    const response = await fetch(this.apiUrl + '/' + id);
+    if (!response.ok)
+      throw new Error(response.status + ' ' + response.statusText);
+    return response.json();
   }
 
   async getOffers(): Promise<Offer[]> {
     const response = await fetch(this.apiUrl);
+    if (!response.ok)
+      throw new Error(response.status + ' ' + response.statusText);
+    return response.json();
+  }
+
+  async createOffer(newOffer: FormData): Promise<Offer> {
+    const response = await fetch(this.apiUrl, {
+      method: 'POST',
+      body: newOffer,
+      headers: {
+        Authorization: 'Bearer ' + this.token,
+      },
+    });
     if (!response.ok)
       throw new Error(response.status + ' ' + response.statusText);
     return response.json();

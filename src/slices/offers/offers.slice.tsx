@@ -1,6 +1,10 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { Offer } from '../../model/offer';
-import { loadOffersThunk } from './offers.thunk';
+import {
+  loadOffersThunk,
+  loadOfferByIdThunk,
+  createOfferThunk,
+} from './offers.thunk';
 
 export type OffersState = {
   offers: Offer[];
@@ -44,6 +48,40 @@ const offersSlice = createSlice({
       state.stateOption = 'error';
       return state;
     });
+
+    //byId
+    builder.addCase(loadOfferByIdThunk.pending, (state: OffersState) => {
+      state.stateOption = 'loading';
+      return state;
+    });
+    builder.addCase(
+      loadOfferByIdThunk.fulfilled,
+      (state: OffersState, { payload }: PayloadAction<Offer>) => {
+        state.currentOfferItem = payload;
+        state.stateOption = 'idle';
+        return state;
+      }
+    );
+    builder.addCase(loadOfferByIdThunk.rejected, (state: OffersState) => {
+      state.stateOption = 'error';
+      return state;
+    });
+
+    // builder.addCase(
+    //   createOfferThunk.fulfilled,
+    //   (state: OffersState, { payload }: PayloadAction<Offer>) => ({
+    //     ...state,
+    //     offers: [...state.offers, payload],
+    //   })
+    // );
+
+    builder.addCase(
+      createOfferThunk.fulfilled,
+      (state: OffersState, { payload }: PayloadAction<Offer>) => {
+        state.offers.push(payload);
+        return state;
+      }
+    );
   },
 });
 
