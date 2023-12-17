@@ -4,6 +4,7 @@ import {
   loadOffersThunk,
   loadOfferByIdThunk,
   createOfferThunk,
+  deleteOfferThunk,
 } from './offers.thunk';
 
 export type OffersState = {
@@ -79,6 +80,16 @@ const offersSlice = createSlice({
       createOfferThunk.fulfilled,
       (state: OffersState, { payload }: PayloadAction<Offer>) => {
         state.offers.push(payload);
+        return state;
+      }
+    );
+    builder.addCase(
+      deleteOfferThunk.fulfilled,
+      (state: OffersState, { payload }: PayloadAction<Offer['id']>) => {
+        state.offers.splice(
+          state.offers.findIndex((item) => item.id === payload),
+          1
+        );
         return state;
       }
     );

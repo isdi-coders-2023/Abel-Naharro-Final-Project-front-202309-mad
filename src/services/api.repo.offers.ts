@@ -37,4 +37,15 @@ export class OffersRepo {
       throw new Error(response.status + ' ' + response.statusText);
     return response.json();
   }
+
+  async deleteOffer(id: Offer['id']): Promise<void> {
+    const response = await fetch(`${this.apiUrl}/${id}`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: 'Bearer ' + this.token,
+      },
+    });
+    if (!response.ok)
+      throw new Error(response.status + ' ' + response.statusText);
+  }
 }

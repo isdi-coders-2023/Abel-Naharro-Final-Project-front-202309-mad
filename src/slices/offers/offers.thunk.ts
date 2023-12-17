@@ -30,3 +30,14 @@ export const createOfferThunk = createAsyncThunk<Offer, Params>(
     return finalClothingItem;
   }
 );
+
+export const deleteOfferThunk = createAsyncThunk<
+  Offer['id'],
+  {
+    repo: OffersRepo;
+    id: Offer['id'];
+  }
+>('delete', async ({ repo, id }) => {
+  await repo.deleteOffer(id);
+  return id;
+});

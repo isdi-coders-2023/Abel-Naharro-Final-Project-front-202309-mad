@@ -6,7 +6,9 @@ import {
   loadOffersThunk,
   loadOfferByIdThunk,
   createOfferThunk,
+  deleteOfferThunk,
 } from '../slices/offers/offers.thunk.ts';
+import { Offer } from '../model/offer.ts';
 
 export function useOffers() {
   const { currentOfferItem, offers } = useSelector(
@@ -29,6 +31,15 @@ export function useOffers() {
   //   return await repo.getOfferById(id);
   // };
 
+  const deleteOffer = async (id: Offer['id']) => {
+    dispatch(
+      deleteOfferThunk({
+        id,
+        repo,
+      })
+    );
+  };
+
   const createOffer = async (newOffer: FormData) => {
     dispatch(
       createOfferThunk({
@@ -44,6 +55,7 @@ export function useOffers() {
     offers,
     currentOfferItem,
     createOffer,
+    deleteOffer,
     // loadExternalOffer,
   };
 }
