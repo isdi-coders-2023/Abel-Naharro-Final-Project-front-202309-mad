@@ -1,4 +1,4 @@
-import { SyntheticEvent } from 'react';
+import { SyntheticEvent, useState } from 'react';
 import './form.create.scss';
 import { useNavigate } from 'react-router-dom';
 import { useOffers } from '../../hooks/use.offers';
@@ -9,6 +9,7 @@ export function FormCreate() {
   const navigate = useNavigate();
 
   const { createOffer } = useOffers();
+  const [isCreate, setIsCreate] = useState(false);
 
   const handleSubmit = (event: SyntheticEvent) => {
     event.preventDefault();
@@ -17,8 +18,11 @@ export function FormCreate() {
     const formData = new FormData(form);
 
     createOffer(formData);
+    setIsCreate(true);
 
-    navigate('/');
+    setInterval(() => {
+      navigate('/');
+    }, 2000);
   };
 
   return (
@@ -57,7 +61,7 @@ export function FormCreate() {
           </div> */}
           <div>
             <label htmlFor="coupon">Coupon</label>
-            <input type="text" id="coupon" name="coupon" required />
+            <input type="text" id="coupon" name="coupon" />
           </div>
           <div>
             <label htmlFor="url">Url offer</label>
@@ -66,12 +70,12 @@ export function FormCreate() {
           <div>
             <label htmlFor="category">Category</label>
             <select name="category" id="category">
-              <option value="mobile">Mobiles</option>
+              <option value="mobiles">Mobiles</option>
               <option value="tablets">Tablets</option>
               <option value="computers">Computers</option>
               <option value="games">Games</option>
-              <option value="digital">Digital content</option>
-              <option value="others">Others</option>
+              {/* <option value="digital">Digital content</option>
+              <option value="others">Others</option> */}
             </select>
           </div>
           {/* <div>
@@ -82,9 +86,16 @@ export function FormCreate() {
             <label htmlFor="date-to-end">Date end offer</label>
             <input type="date" id="date-to-end" name="dateToEnd" required />
           </div> */}
-          <div className="share-container">
-            <input type="submit" value="Share Offer" />
-          </div>
+
+          {isCreate ? (
+            <div className="alert-confirm-delete">
+              <p>Offer has been successfully shared</p>
+            </div>
+          ) : (
+            <div className="share-container">
+              <input type="submit" value="Share Offer" />
+            </div>
+          )}
         </form>
       </div>
     </section>

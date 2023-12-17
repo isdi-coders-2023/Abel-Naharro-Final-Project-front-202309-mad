@@ -1,23 +1,23 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import './confirm.delete.scss';
-import { SyntheticEvent } from 'react';
+import { SyntheticEvent, useState } from 'react';
 import { useOffers } from '../../hooks/use.offers';
 
 export function ConfirmDelete() {
   const { id } = useParams();
   const navigate = useNavigate();
   const { deleteOffer } = useOffers();
+  const [isDelete, setIsDelete] = useState(false);
 
   const handleClickToDelete = (event: SyntheticEvent) => {
     event.preventDefault();
 
-    // const form = event.target as HTMLFormElement;
-    // const formData = new FormData(form);
-    // console.log(formData);
-    // // createOffer(formData);
-    // console.log('DELETE');
     deleteOffer(id!);
-    navigate('/');
+    setIsDelete(true);
+
+    setInterval(() => {
+      navigate('/');
+    }, 2000);
   };
 
   return (
@@ -26,9 +26,15 @@ export function ConfirmDelete() {
         <p>Delete offer</p>
         <p>Are you sure you want to remove the offer?</p>
         <p>{id}</p>
-        <button className="btn btn-delete" onClick={handleClickToDelete}>
-          Delete
-        </button>
+        {isDelete ? (
+          <div className="alert-confirm-delete">
+            <p>Offer successfully deleted </p>
+          </div>
+        ) : (
+          <button className="btn btn-delete" onClick={handleClickToDelete}>
+            Delete
+          </button>
+        )}
       </div>
     </section>
   );
