@@ -23,6 +23,18 @@ export const loadOfferByIdThunk = createAsyncThunk<
   return offer;
 });
 
+export const filterOffersByCategoryThunk = createAsyncThunk(
+  'filter',
+  async ({ repo, category }: { repo: OffersRepo; category: string }) => {
+    const offers = await repo.filterOffersByCategory(category);
+    if (!category) {
+      return offers;
+    } else {
+      return offers.filter((offer) => offer.category === category);
+    }
+  }
+);
+
 export const createOfferThunk = createAsyncThunk<Offer, Params>(
   'create',
   async ({ repo, newOffer }) => {
@@ -40,4 +52,16 @@ export const deleteOfferThunk = createAsyncThunk<
 >('delete', async ({ repo, id }) => {
   await repo.deleteOffer(id);
   return id;
+});
+
+export const updateOfferThunk = createAsyncThunk<
+  Offer,
+  {
+    repo: OffersRepo;
+    id: Offer['id'];
+    updateOffer: FormData;
+  }
+>('update', async ({ repo, id, updateOffer }) => {
+  const finalClothingItem = await repo.updateOffer(id, updateOffer);
+  return finalClothingItem;
 });

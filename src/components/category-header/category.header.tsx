@@ -1,7 +1,11 @@
 import { SyntheticEvent } from 'react';
 import './category.header.scss';
+import { useOffers } from '../../hooks/use.offers';
+import { Loading } from '../loading/loading';
 
 export function CategoryHeader() {
+  const { loadByCategory, offers } = useOffers();
+
   const handleClickLeft = (event: SyntheticEvent) => {
     event.preventDefault();
     const scroll = document.querySelector('.category-list') as HTMLElement;
@@ -11,6 +15,19 @@ export function CategoryHeader() {
     event.preventDefault();
     const scroll = document.querySelector('.category-list') as HTMLElement;
     scroll.scrollLeft += 100;
+  };
+
+  const handleClickFilterByCategory = (
+    event: SyntheticEvent,
+    category: string
+  ) => {
+    event.preventDefault();
+
+    if (offers.length === 0) {
+      return <Loading />;
+    }
+
+    loadByCategory(category);
   };
 
   return (
@@ -25,22 +42,42 @@ export function CategoryHeader() {
       </button>
       <ul className="category-list">
         <li>
-          <a href="#">
+          <a
+            href="#"
+            onClick={(event) => handleClickFilterByCategory(event, 'all')}
+          >
+            <i className="fa-solid fa-rotate"></i> All
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+            onClick={(event) => handleClickFilterByCategory(event, 'mobiles')}
+          >
             <i className="fa-solid fa-mobile-screen"></i> Mobiles
           </a>
         </li>
         <li>
-          <a href="#">
+          <a
+            href="#"
+            onClick={(event) => handleClickFilterByCategory(event, 'tablets')}
+          >
             <i className="fa-solid fa-tablet-screen-button"></i> Tables
           </a>
         </li>
         <li>
-          <a href="#">
+          <a
+            href="#"
+            onClick={(event) => handleClickFilterByCategory(event, 'computers')}
+          >
             <i className="fa-solid fa-laptop"></i>Computers
           </a>
         </li>
         <li>
-          <a href="#">
+          <a
+            href="#"
+            onClick={(event) => handleClickFilterByCategory(event, 'games')}
+          >
             <i className="fa-solid fa-gamepad"></i>Games
           </a>
         </li>

@@ -11,7 +11,6 @@ export class OffersRepo {
   }
 
   async getOfferById(id: string): Promise<Offer> {
-    console.log('getOfferById', id);
     const response = await fetch(this.apiUrl + '/' + id);
     if (!response.ok)
       throw new Error(response.status + ' ' + response.statusText);
@@ -20,6 +19,13 @@ export class OffersRepo {
 
   async getOffers(): Promise<Offer[]> {
     const response = await fetch(this.apiUrl);
+    if (!response.ok)
+      throw new Error(response.status + ' ' + response.statusText);
+    return response.json();
+  }
+
+  async filterOffersByCategory(category: string): Promise<Offer[]> {
+    const response = await fetch(`${this.apiUrl}/category/${category}`);
     if (!response.ok)
       throw new Error(response.status + ' ' + response.statusText);
     return response.json();
@@ -47,5 +53,18 @@ export class OffersRepo {
     });
     if (!response.ok)
       throw new Error(response.status + ' ' + response.statusText);
+  }
+
+  async updateOffer(id: string, updateOffer: FormData): Promise<Offer> {
+    const response = await fetch(`${this.apiUrl}/${id}`, {
+      method: 'PATCH',
+      body: updateOffer,
+      headers: {
+        Authorization: 'Bearer ' + this.token,
+      },
+    });
+    if (!response.ok)
+      throw new Error(response.status + ' ' + response.statusText);
+    return response.json();
   }
 }

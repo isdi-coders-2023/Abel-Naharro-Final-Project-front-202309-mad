@@ -7,11 +7,13 @@ import {
   loadOfferByIdThunk,
   createOfferThunk,
   deleteOfferThunk,
+  updateOfferThunk,
+  filterOffersByCategoryThunk,
 } from '../slices/offers/offers.thunk.ts';
 import { Offer } from '../model/offer.ts';
 
 export function useOffers() {
-  const { currentOfferItem, offers } = useSelector(
+  const { currentOfferItem, offers, filteredOffersByCategory } = useSelector(
     (state: RootState) => state.offersState
   );
   const { token } = useSelector((state: RootState) => state.usersState);
@@ -26,10 +28,6 @@ export function useOffers() {
   const loadOffer = useCallback(async () => {
     dispatch(loadOfferByIdThunk({ repo, id: currentOfferItem?.id as string }));
   }, [repo, currentOfferItem?.id, dispatch]);
-
-  // const loadExternalOffer = async (id: string) => {
-  //   return await repo.getOfferById(id);
-  // };
 
   const deleteOffer = async (id: Offer['id']) => {
     dispatch(
@@ -49,6 +47,18 @@ export function useOffers() {
     );
   };
 
+  const updateOffer = async (id: Offer['id'], updateOffer: FormData) => {
+    dispatch(updateOfferThunk({ id, repo, updateOffer }));
+  };
+
+  const loadByCategory = async (category: string) => {
+    if (category !== 'all') {
+      dispatch(filterOffersByCategoryThunk({ category, repo }));
+    } else {
+      dispatch(loadOffersThunk(repo));
+    }
+  };
+
   return {
     loadOffers,
     loadOffer,
@@ -56,6 +66,8 @@ export function useOffers() {
     currentOfferItem,
     createOffer,
     deleteOffer,
-    // loadExternalOffer,
+    updateOffer,
+    filteredOffersByCategory,
+    loadByCategory,
   };
 }

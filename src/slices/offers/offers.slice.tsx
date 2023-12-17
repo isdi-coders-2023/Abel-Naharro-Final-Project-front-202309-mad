@@ -5,18 +5,22 @@ import {
   loadOfferByIdThunk,
   createOfferThunk,
   deleteOfferThunk,
+  updateOfferThunk,
+  filterOffersByCategoryThunk,
 } from './offers.thunk';
 
 export type OffersState = {
   offers: Offer[];
   stateOption: 'idle' | 'loading' | 'error';
   currentOfferItem: Offer | null;
+  filteredOffersByCategory: Offer[];
 };
 
 const initialState: OffersState = {
   offers: [],
   stateOption: 'idle',
   currentOfferItem: null,
+  filteredOffersByCategory: [],
 };
 
 const offersSlice = createSlice({
@@ -28,6 +32,13 @@ const offersSlice = createSlice({
       { payload }: PayloadAction<Offer | null>
     ) => {
       state.currentOfferItem = payload;
+      return state;
+    },
+    setFilteredByCategory: (
+      state: OffersState,
+      { payload }: PayloadAction<Offer[]>
+    ) => {
+      state.filteredOffersByCategory = payload;
       return state;
     },
   },
@@ -67,15 +78,6 @@ const offersSlice = createSlice({
       state.stateOption = 'error';
       return state;
     });
-
-    // builder.addCase(
-    //   createOfferThunk.fulfilled,
-    //   (state: OffersState, { payload }: PayloadAction<Offer>) => ({
-    //     ...state,
-    //     offers: [...state.offers, payload],
-    //   })
-    // );
-
     builder.addCase(
       createOfferThunk.fulfilled,
       (state: OffersState, { payload }: PayloadAction<Offer>) => {
@@ -93,8 +95,23 @@ const offersSlice = createSlice({
         return state;
       }
     );
+    builder.addCase(
+      updateOfferThunk.fulfilled,
+      (state: OffersState, { payload }: PayloadAction<Offer>) => {
+        state.offers[state.offers.findIndex((item) => item.id === payload.id)] =
+          payload;
+        return state;
+      }
+    );
+    builder.addCase(
+      filterOffersByCategoryThunk.fulfilled,
+      (state: OffersState, { payload }: PayloadAction<Offer[]>) => {
+        state.offers = payload;
+        return state;
+      }
+    );
   },
 });
 
 export default offersSlice.reducer;
-export const { setCurrentOffers } = offersSlice.actions;
+export const { setCurrentOffers, setFilteredByCategory } = offersSlice.actions;
