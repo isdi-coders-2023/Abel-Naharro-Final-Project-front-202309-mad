@@ -3,12 +3,16 @@ import { useOffers } from '../../hooks/use.offers';
 import { useUsers } from '../../hooks/use.users';
 //import { Offer } from '../../model/offer';
 import './user.profile.scss';
-import { SyntheticEvent } from 'react';
+import { SyntheticEvent, useEffect } from 'react';
 
 export function UserProfile() {
   const { logout, loggedUser } = useUsers();
-  const { offers } = useOffers();
+  const { offers, loadOffers } = useOffers();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    loadOffers();
+  }, [loadOffers]);
 
   const handleClick = (event: SyntheticEvent) => {
     event.preventDefault();
@@ -20,7 +24,6 @@ export function UserProfile() {
     return item.author.id === loggedUser?.id;
   });
 
-  console.log(loggedUser);
   return (
     <section className="user-profile">
       <div>
@@ -39,7 +42,7 @@ export function UserProfile() {
         <div>
           <ul>
             {offersByUser.map((item) => (
-              <li>
+              <li key={item.id}>
                 {item.title}
                 <Link to={`/offer/` + item.id}>View</Link>
                 <Link to={`/offer/edit/` + item.id}>Edit</Link>
