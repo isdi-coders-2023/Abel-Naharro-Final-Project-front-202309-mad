@@ -37,8 +37,6 @@ export function OfferDetails() {
   if (description.length > 150) {
     description = description.substring(0, 150) + '...';
   }
-  console.log('OFFER: ', offerItem);
-  console.log(offerItem.author);
 
   return (
     <>
