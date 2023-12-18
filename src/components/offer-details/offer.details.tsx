@@ -42,7 +42,7 @@ export function OfferDetails() {
     <>
       {offerItem && (
         <section className="card-offer-details" role="contentinfo">
-          <div>
+          <div className="container-card">
             <div className="content-image">
               <img src={offerItem.image.cloudinaryURL} alt="offer image" />
             </div>
@@ -77,26 +77,34 @@ export function OfferDetails() {
                 <i className="fa-solid fa-user-tag"></i>
                 <p>{offerItem.author.userName}</p>
               </div>
-              {loggedUser ? (
-                <>
-                  <div className="offer-link">
-                    <a
-                      href={offerItem.offerURL}
-                      target="_blank"
-                      title="Link offer"
-                    >
-                      Open Offer
-                    </a>
+              <div className="container-buttons">
+                {loggedUser ? (
+                  <>
+                    <div className="offer-link">
+                      {offerItem.isCoupon && (
+                        <div className="offer-coupon">
+                          <span>Coupon:</span>{' '}
+                          <span className="text-coupon">
+                            {offerItem.coupon}
+                          </span>
+                        </div>
+                      )}
+                      <a
+                        href={offerItem.offerURL}
+                        target="_blank"
+                        title="Link offer"
+                      >
+                        Open Offer{' '}
+                        <i className="fa-solid fa-arrow-up-right-from-square"></i>
+                      </a>
+                    </div>
+                  </>
+                ) : (
+                  <div className="info-offer-not-login">
+                    Sign in to see the offer
                   </div>
-                  {offerItem.isCoupon && (
-                    <div className="offer-coupon">{offerItem.coupon}</div>
-                  )}
-                </>
-              ) : (
-                <div className="info-offer-not-login">
-                  Sign in to see the offer
-                </div>
-              )}
+                )}
+              </div>
             </div>
           </div>
         </section>

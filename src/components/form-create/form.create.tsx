@@ -1,14 +1,14 @@
 import { SyntheticEvent, useState } from 'react';
-import './form.create.scss';
 import { useNavigate } from 'react-router-dom';
 import { useOffers } from '../../hooks/use.offers';
+import { useUsers } from '../../hooks/use.users';
+import './form.create.scss';
 
 export function FormCreate() {
-  // const [hasLogin, setHasLogin] = useState(false);
-  // const { login, loggedUser } = useUsers();
   const navigate = useNavigate();
 
   const { createOffer } = useOffers();
+  const { loggedUser } = useUsers();
   const [isCreate, setIsCreate] = useState(false);
 
   const handleSubmit = (event: SyntheticEvent) => {
@@ -20,9 +20,12 @@ export function FormCreate() {
     createOffer(formData);
     setIsCreate(true);
 
-    setInterval(() => {
-      navigate('/');
-    }, 2000);
+    if (isCreate) {
+      setInterval(() => {
+        setIsCreate(false);
+        navigate('/my-profile');
+      }, 2000);
+    }
   };
 
   return (

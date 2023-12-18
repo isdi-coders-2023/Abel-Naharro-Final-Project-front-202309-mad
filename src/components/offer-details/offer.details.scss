@@ -7,15 +7,14 @@
   flex-direction: row;
   padding: 2rem;
 
-  div {
+  .container-card {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    gap: 2rem;
+    gap: 1rem;
     padding: 1rem 2rem;
     background: white;
     border-radius: 1rem;
-    margin-bottom: 1.5rem;
     max-width: 936px;
 
     .content-image {
@@ -28,7 +27,7 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 0.5rem;
+      gap: 1rem;
       font-family: $roboto;
 
       .content-info-header {
@@ -115,23 +114,85 @@
         align-items: center;
         gap: 0.5rem;
       }
-      .offer-link {
-        display: flex;
+      .container-buttons {
         width: 100%;
-        flex-direction: row;
-        justify-content: flex-end;
 
-        a {
-          font-weight: 600;
-          padding: 0.5rem 5rem;
-          border-radius: 2rem;
-          color: $white-base;
-          background: $orange;
-          text-decoration: none;
+        .offer-link {
+          gap: 1rem;
+          display: flex;
+          width: 100%;
+          flex-direction: row;
+          justify-content: flex-end;
 
-          &:hover {
-            background: $orange-hover;
-            box-shadow: 0 0 0 1px var($orange-hover);
+          a {
+            width: 20rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            align-items: center;
+            font-weight: 600;
+            padding: 0.5rem 4rem;
+            border-radius: 2rem;
+            color: $white-base;
+            background: $orange;
+            text-decoration: none;
+            gap: 0.5rem;
+
+            &:hover {
+              background: $orange-hover;
+              box-shadow: 0 0 0 1px var($orange-hover);
+            }
+          }
+        }
+        .offer-coupon {
+          display: flex;
+          width: 100%;
+          flex-direction: row;
+          justify-content: flex-end;
+          align-items: center;
+          gap: 1rem;
+          flex-direction: row;
+
+          .text-coupon {
+            border: 1px solid $grey-base;
+            border-radius: 1rem;
+            font-weight: 600;
+            padding: 0.5rem 5rem;
+            border-radius: 2rem;
+            display: flex;
+            align-items: center;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .card-offer-details {
+    padding: 0.5rem 0.5rem 5rem 0.5rem;
+    flex-direction: column;
+    .container-card {
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+
+      .content-info {
+        width: 100%;
+
+        .container-buttons {
+          .offer-link {
+            flex-direction: column;
+            align-items: center;
+
+            .offer-coupon {
+              display: flex;
+              flex-direction: column;
+            }
+
+            a {
+              width: 100%;
+            }
           }
         }
       }
@@ -140,58 +201,61 @@
 }
 
 @media (max-width: 715px) {
-  .card-offer {
-    padding: 0.5rem;
-    gap: 0.5rem;
-    // .content-image {
-    // }
-    .content-info {
-      .content-info-header {
-        .buttons-vote {
-          padding: 0rem;
-          gap: 0.2rem;
-        }
-        .created-at {
-          font-size: 0.8rem;
-        }
-      }
-
-      .title {
-        font-size: 1rem;
-      }
-      .subtitle {
-        font-size: 0.8rem;
-        .brand-store {
-          padding: 0.1rem 0.5rem;
-        }
-      }
-      .description {
-        font-size: 0.5rem;
-      }
-      .author {
-        p {
-          font-size: 0.5rem;
-        }
-      }
-      .offer-link {
-        a {
-          padding: 0.3rem 2rem;
-        }
-      }
-      .info-offer-not-login {
-        width: 100%;
-        max-width: 15rem;
-        border: 1px solid #ff9300;
-        border-radius: 1rem;
-        padding: 1rem;
-        background: #ff9b0070;
-        font-size: 0.8rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-        font-weight: 600;
-      }
-    }
-  }
 }
+
+// @media (max-width: 715px) {
+//   .card-offer-details {
+//     padding: 0.5rem;
+//     gap: 0.5rem;
+//     // .content-image {
+//     // }
+//     .content-info {
+//       .content-info-header {
+//         .buttons-vote {
+//           padding: 0rem;
+//           gap: 0.2rem;
+//         }
+//         .created-at {
+//           font-size: 0.8rem;
+//         }
+//       }
+
+//       .title {
+//         font-size: 1rem;
+//       }
+//       .subtitle {
+//         font-size: 0.8rem;
+//         .brand-store {
+//           padding: 0.1rem 0.5rem;
+//         }
+//       }
+//       .description {
+//         font-size: 0.5rem;
+//       }
+//       .author {
+//         p {
+//           font-size: 0.5rem;
+//         }
+//       }
+//       .offer-link {
+//         a {
+//           padding: 0.3rem 2rem;
+//         }
+//       }
+//       .info-offer-not-login {
+//         width: 100%;
+//         max-width: 15rem;
+//         border: 1px solid #ff9300;
+//         border-radius: 1rem;
+//         padding: 1rem;
+//         background: #ff9b0070;
+//         font-size: 0.8rem;
+//         display: flex;
+//         flex-direction: column;
+//         align-items: center;
+//         gap: 1rem;
+//         font-weight: 600;
+//       }
+//     }
+//   }
+// }

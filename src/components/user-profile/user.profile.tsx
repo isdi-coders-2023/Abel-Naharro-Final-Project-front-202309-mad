@@ -26,27 +26,40 @@ export function UserProfile() {
 
   return (
     <section className="user-profile">
-      <div>
-        <button onClick={handleClick} onKeyDown={logout}>
-          Log Out
-        </button>
+      <div className="info-user">
+        <p className="header">My data</p>
+        <div>
+          <p>Name: {loggedUser?.userName}</p>
+          <p>Email: {loggedUser?.email}</p>
+        </div>
+        <div className="container-logout">
+          <button
+            onClick={handleClick}
+            onKeyDown={logout}
+            className="button-logout"
+          >
+            Log Out
+          </button>
+        </div>
       </div>
-      <div>
-        <p>My data:</p>
-        <p></p>
-        <p>Name: {loggedUser?.userName}</p>
-        <p>Email: {loggedUser?.email}</p>
-      </div>
-      <div>
-        <p>My offers:</p>
+      <div className="user-offers">
+        <p className="header">My offers</p>
         <div>
           <ul>
             {offersByUser.map((item) => (
               <li key={item.id}>
-                {item.title}
-                <Link to={`/offer/` + item.id}>View</Link>
-                <Link to={`/offer/edit/` + item.id}>Edit</Link>
-                <Link to={`/offer/delete/` + item.id}>Delete</Link>
+                <div className="offer-name">{item.title}</div>
+                <div className="container-buttons">
+                  <Link className="show" to={`/offer/` + item.id}>
+                    View
+                  </Link>
+                  <Link className="edit" to={`/offer/edit/` + item.id}>
+                    Edit
+                  </Link>
+                  <Link className="delete" to={`/offer/delete/` + item.id}>
+                    Delete
+                  </Link>
+                </div>
               </li>
             ))}
           </ul>

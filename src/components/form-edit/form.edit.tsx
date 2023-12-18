@@ -1,14 +1,15 @@
 import { SyntheticEvent, useState } from 'react';
-import './form.edit.scss';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Loading } from '../loading/loading';
 import { Offer } from '../../model/offer';
 import { useOffers } from '../../hooks/use.offers';
-//import { useOffers } from '../../hooks/use.offers';
+import { useUsers } from '../../hooks/use.users';
+import './form.edit.scss';
 
 export function FormEdit() {
   const { id } = useParams();
   const { offers, updateOffer } = useOffers();
+  const { loggedUser } = useUsers();
   const navigate = useNavigate();
   const [isEdit, setIsEdit] = useState(false);
 
@@ -31,9 +32,12 @@ export function FormEdit() {
     updateOffer(offerItem.id, formData);
     setIsEdit(true);
 
-    setInterval(() => {
-      navigate('/');
-    }, 2000);
+    if (isEdit) {
+      setInterval(() => {
+        setIsEdit(false);
+        navigate('/my-profile');
+      }, 2000);
+    }
   };
 
   return (
