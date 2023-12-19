@@ -29,7 +29,7 @@
       flex-direction: row;
       width: 100%;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-end;
 
       .buttons-vote {
         border: 1px solid $grey-base;
@@ -39,6 +39,7 @@
         flex-direction: row;
         align-items: center;
         gap: 1rem;
+        display: none;
 
         button {
           background: none;

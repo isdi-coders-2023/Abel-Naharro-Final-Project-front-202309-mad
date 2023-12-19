@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Offer } from '../../model/offer';
+// import { makeImageURL } from '../../services/cloudinary';
 import './offer.scss';
 
 type Props = {
@@ -28,6 +29,13 @@ export function OfferCard({ offerItem }: Props) {
   if (description.length > 150) {
     description = description.substring(0, 150) + '...';
   }
+
+  // const mobileOfferImg =
+  //   offerItem?.image?.publicId && makeImageURL(offerItem.image.publicId, 160);
+  // const desktopOfferImg =
+  //   offerItem?.image?.publicId && makeImageURL(offerItem.image.publicId, 205);
+  // const desktopBigOfferImg =
+  //   offerItem?.image?.publicId && makeImageURL(offerItem.image.publicId, 255);
 
   return (
     <section className="card-offer" role="contentinfo">
