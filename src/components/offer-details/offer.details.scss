@@ -35,16 +35,18 @@
         flex-direction: row;
         width: 100%;
         align-items: center;
-        justify-content: space-between;
+        justify-content: flex-end;
+        // justify-content: space-between;
 
         .buttons-vote {
+          display: none;
           border: 1px solid $grey-base;
           padding: 0.2rem;
           border-radius: 2rem;
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          gap: 1rem;
+          // display: flex;
+          // flex-direction: row;
+          // align-items: center;
+          // gap: 1rem;
 
           button {
             background: none;
