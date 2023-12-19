@@ -48,7 +48,10 @@ export function UserProfile() {
           <ul>
             {offersByUser.map((item) => (
               <li key={item.id}>
-                <div className="offer-name">{item.title}</div>
+                <div className="offer-name">
+                  <img src={item.image.cloudinaryURL} title="image offer" />
+                  {item.title}
+                </div>
                 <div className="container-buttons">
                   <Link className="show" to={`/offer/` + item.id}>
                     View

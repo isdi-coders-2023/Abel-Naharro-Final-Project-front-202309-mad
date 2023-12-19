@@ -87,7 +87,14 @@
         padding: 1rem;
         border-radius: 1rem;
 
-        offer-name {
+        .offer-name {
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: 0.5rem;
+          img {
+            width: 4rem;
+          }
         }
         .container-buttons {
           display: flex;
