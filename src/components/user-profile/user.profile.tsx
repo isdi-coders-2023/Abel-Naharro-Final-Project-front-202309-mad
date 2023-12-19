@@ -25,7 +25,7 @@ export function UserProfile() {
   });
 
   return (
-    <section className="user-profile">
+    <section className="user-profile" role="contentinfo">
       <div className="info-user">
         <p className="header">My data</p>
         <div>

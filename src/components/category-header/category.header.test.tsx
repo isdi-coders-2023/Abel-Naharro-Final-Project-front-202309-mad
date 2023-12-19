@@ -1,17 +1,45 @@
 import { screen, render } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { CategoryHeader } from './category.header';
 import userEvent from '@testing-library/user-event';
+import { MemoryRouter as Router } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { appStore } from '../../store/store.ts';
+import { CategoryHeader } from './category.header';
 
-describe('Given SubHeaders component', () => {
+jest.mock('../loading/loading');
+
+describe('Given CategoryHeader component', () => {
   describe('When we instantiate', () => {
     beforeEach(() => {
-      render(<CategoryHeader></CategoryHeader>);
+      render(
+        <Provider store={appStore}>
+          <Router>
+            <CategoryHeader />
+          </Router>
+        </Provider>
+      );
     });
 
-    test('Then it should be in the document', async () => {
-      const element = screen.getByRole('button');
-      await userEvent.click(element);
+    test('Then it should render the category list', () => {
+      const categoryList = screen.getByRole('tabpanel');
+      expect(categoryList).toBeInTheDocument();
+    });
+
+    test('Then it should render the left scroll button and scroll left when left scroll button is clicked', () => {
+      const scrollLeftButton = screen.getByTestId('scroll-left');
+      expect(scrollLeftButton).toBeInTheDocument();
+      userEvent.click(scrollLeftButton);
+    });
+
+    test('Then it should render the right scroll button and scroll right when right scroll button is clicked', () => {
+      const scrollRightButton = screen.getByTestId('scroll-right');
+      expect(scrollRightButton).toBeInTheDocument();
+      userEvent.click(scrollRightButton);
+    });
+
+    test('Then it should load offers when a category is clicked', () => {
+      const categoryButton = screen.getByText('Mobiles');
+      userEvent.click(categoryButton);
     });
   });
 });

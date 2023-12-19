@@ -1,10 +1,9 @@
 import { SyntheticEvent } from 'react';
 import './category.header.scss';
 import { useOffers } from '../../hooks/use.offers';
-import { Loading } from '../loading/loading';
 
 export function CategoryHeader() {
-  const { loadByCategory, offers } = useOffers();
+  const { loadByCategory } = useOffers();
 
   const handleClickLeft = (event: SyntheticEvent) => {
     event.preventDefault();
@@ -23,10 +22,6 @@ export function CategoryHeader() {
   ) => {
     event.preventDefault();
 
-    if (offers.length === 0) {
-      return <Loading />;
-    }
-
     loadByCategory(category);
   };
 
@@ -37,6 +32,7 @@ export function CategoryHeader() {
         role="button"
         onClick={handleClickLeft}
         title="Scroll to left"
+        data-testid="scroll-left"
       >
         <i className="fa-solid fa-angle-left"></i>
       </button>
@@ -102,6 +98,7 @@ export function CategoryHeader() {
         className="control-scroll-category"
         onClick={handleClickRight}
         title="Scroll to right"
+        data-testid="scroll-right"
       >
         <i className="fa-solid fa-angle-right"></i>
       </button>

@@ -1,21 +1,16 @@
 import { SyntheticEvent, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Loading } from '../loading/loading';
 import { Offer } from '../../model/offer';
 import { useOffers } from '../../hooks/use.offers';
-import { useUsers } from '../../hooks/use.users';
+// import { useUsers } from '../../hooks/use.users';
 import './form.edit.scss';
 
 export function FormEdit() {
   const { id } = useParams();
   const { offers, updateOffer } = useOffers();
-  const { loggedUser } = useUsers();
+  // const { loggedUser } = useUsers();
   const navigate = useNavigate();
   const [isEdit, setIsEdit] = useState(false);
-
-  if (offers.length === 0) {
-    return <Loading />;
-  }
 
   const offerItem = offers.find((item: Offer) => item.id === id) as Offer;
 

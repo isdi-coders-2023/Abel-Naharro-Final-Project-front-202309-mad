@@ -2,13 +2,13 @@ import { useNavigate, useParams } from 'react-router-dom';
 import './confirm.delete.scss';
 import { SyntheticEvent, useState } from 'react';
 import { useOffers } from '../../hooks/use.offers';
-import { useUsers } from '../../hooks/use.users';
+// import { useUsers } from '../../hooks/use.users';
 
 export function ConfirmDelete() {
   const { id } = useParams();
   const navigate = useNavigate();
   const { deleteOffer } = useOffers();
-  const { loggedUser } = useUsers();
+  // const { loggedUser } = useUsers();
   const [isDelete, setIsDelete] = useState(false);
 
   const handleClickToDelete = (event: SyntheticEvent) => {
