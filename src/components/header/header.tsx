@@ -8,7 +8,10 @@ export function Header() {
   return (
     <header>
       <div className="header-logo">
-        <img src="/img/icon.png" title="Icono Todotecnofertas" />
+        <img
+          src="https://res.cloudinary.com/dm53t8asy/image/upload/v1703009349/todotecnofertas/icon_dwdugi.png"
+          title="Icono Todotecnofertas"
+        />
         <h1>
           Todo<span>tecnofertas</span>
         </h1>
