@@ -81,7 +81,7 @@ export function OfferDetails() {
                 {loggedUser ? (
                   <>
                     <div className="offer-link">
-                      {offerItem.isCoupon && (
+                      {offerItem.coupon !== '' && (
                         <div className="offer-coupon">
                           <span>Coupon:</span>{' '}
                           <span className="text-coupon">
