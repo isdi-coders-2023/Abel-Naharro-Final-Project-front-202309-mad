@@ -77,8 +77,8 @@ export function FormCreate() {
               <option value="tablets">Tablets</option>
               <option value="computers">Computers</option>
               <option value="games">Games</option>
-              {/* <option value="digital">Digital content</option>
-              <option value="others">Others</option> */}
+              <option value="digital">Digital content</option>
+              <option value="others">Others</option>
             </select>
           </div>
           {/* <div>
