@@ -41,14 +41,14 @@ export function CategoryHeader() {
         <i className="fa-solid fa-angle-left"></i>
       </button>
       <ul className="category-list">
-        <li>
+        {/* <li>
           <a
             href="#"
             onClick={(event) => handleClickFilterByCategory(event, 'all')}
           >
             <i className="fa-solid fa-rotate"></i> All
           </a>
-        </li>
+        </li> */}
         <li>
           <a
             href="#"
@@ -79,6 +79,22 @@ export function CategoryHeader() {
             onClick={(event) => handleClickFilterByCategory(event, 'games')}
           >
             <i className="fa-solid fa-gamepad"></i>Games
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+            onClick={(event) => handleClickFilterByCategory(event, 'digital')}
+          >
+            <i className="fa-solid fa-globe"></i>Digital
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+            onClick={(event) => handleClickFilterByCategory(event, 'others')}
+          >
+            <i className="fa-solid fa-globe"></i>Others
           </a>
         </li>
       </ul>
