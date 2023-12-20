@@ -18,7 +18,7 @@ export function ConfirmDelete() {
     setIsDelete(true);
 
     if (isDelete) {
-      setInterval(() => {
+      setTimeout(() => {
         setIsDelete(false);
         navigate('/my-profile');
       }, 2000);

@@ -28,7 +28,7 @@ export function FormEdit() {
     setIsEdit(true);
 
     if (isEdit) {
-      setInterval(() => {
+      setTimeout(() => {
         setIsEdit(false);
         navigate('/my-profile');
       }, 2000);

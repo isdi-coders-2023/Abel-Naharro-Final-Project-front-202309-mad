@@ -3,16 +3,17 @@ import { useOffers } from '../../hooks/use.offers';
 import { useUsers } from '../../hooks/use.users';
 //import { Offer } from '../../model/offer';
 import './user.profile.scss';
-import { SyntheticEvent, useEffect } from 'react';
+import { SyntheticEvent } from 'react';
 
 export function UserProfile() {
   const { logout, loggedUser } = useUsers();
-  const { offers, loadOffers } = useOffers();
+  // const { offers, loadOffers } = useOffers();
+  const { offers } = useOffers();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    loadOffers();
-  }, [loadOffers]);
+  // useEffect(() => {
+  //   loadOffers();
+  // }, [loadOffers]);
 
   const handleClick = (event: SyntheticEvent) => {
     event.preventDefault();

@@ -2,14 +2,16 @@ import { OfferCard } from '../offer/offer';
 import { useOffers } from '../../hooks/use.offers';
 
 import './list.scss';
-import { useEffect } from 'react';
+//import { useEffect } from 'react';
 
 export function List() {
-  const { offers, loadOffers } = useOffers();
+  // const { offers, loadOffers } = useOffers();
 
-  useEffect(() => {
-    loadOffers();
-  }, [loadOffers]);
+  // useEffect(() => {
+  //   loadOffers();
+  // }, [loadOffers]);
+
+  const { offers } = useOffers();
 
   return (
     <section className="list-offers" role="main">

@@ -21,7 +21,7 @@ export function FormCreate() {
     setIsCreate(true);
 
     if (isCreate) {
-      setInterval(() => {
+      setTimeout(() => {
         setIsCreate(false);
         navigate('/my-profile');
       }, 2000);

@@ -26,7 +26,7 @@ export function FormRegister() {
     setIsRegister(true);
     register(data);
 
-    setInterval(() => {
+    setTimeout(() => {
       navigate('/sign-in');
     }, 2000);
   };
