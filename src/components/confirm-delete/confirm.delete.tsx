@@ -15,12 +15,10 @@ export function ConfirmDelete() {
     deleteOffer(id!);
     setIsDelete(true);
 
-    if (isDelete) {
-      setTimeout(() => {
-        setIsDelete(false);
-        navigate('/my-profile');
-      }, 2000);
-    }
+    setTimeout(() => {
+      setIsDelete(false);
+      navigate('/');
+    }, 2000);
   };
 
   return (

@@ -50,7 +50,7 @@ export function CategoryHeader() {
             href="#"
             onClick={(event) => handleClickFilterByCategory(event, 'mobiles')}
           >
-            <i className="fa-solid fa-mobile-screen"></i> Mobiles
+            <i className="fa-solid fa-mobile-screen"></i> Mobile
           </a>
         </li>
         <li>
@@ -58,7 +58,7 @@ export function CategoryHeader() {
             href="#"
             onClick={(event) => handleClickFilterByCategory(event, 'tablets')}
           >
-            <i className="fa-solid fa-tablet-screen-button"></i> Tables
+            <i className="fa-solid fa-tablet-screen-button"></i> Tablets
           </a>
         </li>
         <li>
@@ -82,7 +82,7 @@ export function CategoryHeader() {
             href="#"
             onClick={(event) => handleClickFilterByCategory(event, 'digital')}
           >
-            <i className="fa-solid fa-globe"></i>Digital
+            <i className="fa-solid fa-globe"></i>Digitals
           </a>
         </li>
         <li>

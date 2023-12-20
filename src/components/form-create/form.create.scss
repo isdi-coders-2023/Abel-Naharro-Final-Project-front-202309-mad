@@ -45,6 +45,19 @@
           }
         }
       }
+
+      .alert-confirm-create {
+        border: 1px solid #b9f5b9;
+        border-radius: 1rem;
+        padding: 1rem;
+        background: #edffed;
+        font-size: 0.8rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        font-weight: 600;
+      }
     }
   }
 }

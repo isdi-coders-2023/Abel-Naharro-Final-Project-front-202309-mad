@@ -38,7 +38,7 @@ describe('Given CategoryHeader component', () => {
     });
 
     test('Then it should load offers when a category is clicked', () => {
-      const categoryButton = screen.getByText('Mobiles');
+      const categoryButton = screen.getByText('Mobile');
       userEvent.click(categoryButton);
     });
   });

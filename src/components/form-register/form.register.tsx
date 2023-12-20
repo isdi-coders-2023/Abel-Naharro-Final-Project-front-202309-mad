@@ -34,7 +34,7 @@ export function FormRegister() {
   return (
     <section className="section-register">
       <div className="register-card">
-        <h2>Welcome to Todotechofertas</h2>
+        <h2>Welcome to Todotecnofertas</h2>
         <form name="register-form" onSubmit={handleSubmit}>
           <div>
             <label htmlFor="username">Username</label>
