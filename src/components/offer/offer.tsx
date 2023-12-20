@@ -37,10 +37,18 @@ export function OfferCard({ offerItem }: Props) {
   // const desktopBigOfferImg =
   //   offerItem?.image?.publicId && makeImageURL(offerItem.image.publicId, 255);
 
+  const updatedSkin = {
+    ...offerItem,
+    image: {
+      ...offerItem.image,
+      cloudinaryURL: offerItem.image.cloudinaryURL!.replace('http', 'https'),
+    },
+  };
+
   return (
     <section className="card-offer" role="contentinfo">
       <div className="content-image">
-        <img src={offerItem.image.cloudinaryURL} alt="offer image" />
+        <img src={updatedSkin.image.cloudinaryURL} alt="offer image" />
       </div>
       <div className="content-info">
         <div className="content-info-header">
