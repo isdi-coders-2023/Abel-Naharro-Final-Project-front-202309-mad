@@ -3,9 +3,7 @@ import { MemoryRouter } from 'react-router-dom';
 import { AppRoutes } from './app.routes';
 import { Provider } from 'react-redux';
 import { appStore } from '../../store/store';
-//import { useUsers } from '../../hooks/use.users';
 import '@testing-library/jest-dom';
-//import { User } from '../../model/user';
 
 jest.mock('../../hooks/use.users', () => ({
   useUsers: jest.fn().mockReturnValue({
@@ -133,7 +131,6 @@ describe('Given AppRoutes component', () => {
     jest.mock('../pages/create/create', () => MockedOfferShareComponent);
     let element: HTMLElement;
     beforeEach(async () => {
-      // useUsers().loggedUser = { name: 'Test' } as unknown as User;
       await act(async () => {
         render(
           <Provider store={appStore}>
@@ -156,7 +153,6 @@ describe('Given AppRoutes component', () => {
     jest.mock('../pages/edit/edit', () => MockedOfferEditComponent);
     let element: HTMLElement;
     beforeEach(async () => {
-      // useUsers().loggedUser = { name: 'Test' } as unknown as User;
       await act(async () => {
         render(
           <Provider store={appStore}>
@@ -181,7 +177,6 @@ describe('Given AppRoutes component', () => {
     jest.mock('../pages/delete/delete', () => MockedOfferDeleteComponent);
     let element: HTMLElement;
     beforeEach(async () => {
-      // useUsers().loggedUser = { name: 'Test' } as unknown as User;
       await act(async () => {
         render(
           <Provider store={appStore}>
@@ -209,7 +204,6 @@ describe('Given AppRoutes component', () => {
     jest.mock('../pages/profile/profile', () => MockedUserProfileComponent);
     let element: HTMLElement;
     beforeEach(async () => {
-      // useUsers().loggedUser = { name: 'Test' } as unknown as User;
       await act(async () => {
         render(
           <Provider store={appStore}>

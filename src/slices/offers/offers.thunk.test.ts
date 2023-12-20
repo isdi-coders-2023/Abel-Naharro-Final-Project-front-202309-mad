@@ -53,25 +53,6 @@ describe('Given a scenario where...', () => {
       expect(data.repo.filterOffersByCategory).toHaveBeenCalled();
     });
 
-    // test("Then it should dispatch filterOffersByCategoryThunk and Can't find the category", async () => {
-    //   mockOffersRepo.repo.filterOffersByCategory = jest
-    //     .fn()
-    //     .mockRejectedValue('');
-
-    //   const mockCategory = 'unknown';
-    //   const data = { ...mockOffersRepo } as {
-    //     repo: OffersRepo;
-    //     category: string;
-    //   };
-    //   await appStore.dispatch(
-    //     filterOffersByCategoryThunk({
-    //       repo: data.repo,
-    //       category: mockCategory,
-    //     })
-    //   );
-    //   expect(data.repo.filterOffersByCategory).toHaveBeenCalled();
-    // });
-
     test('Then it should dispatch createOfferThunk', async () => {
       const data = { ...mockOffersRepo } as { repo: OffersRepo };
       const newOffer = {} as FormData;

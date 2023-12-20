@@ -5,7 +5,6 @@ import { appStore } from '../../store/store.ts';
 import { MemoryRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { Offer } from '../../model/offer.ts';
-import { useOffers } from '../../hooks/use.offers.tsx';
 
 jest.mock('../offer/offer');
 
@@ -32,14 +31,6 @@ describe('Given List component', () => {
     test('Then it should be in the document', () => {
       const element = screen.getByRole('main');
       expect(element).toBeInTheDocument();
-    });
-
-    test.skip('renders OfferCard for each offer', async () => {
-      const clothingItems = useOffers().offers;
-      clothingItems.forEach((item) => {
-        const cardElement = screen.getByText(item.title);
-        expect(cardElement).toBeInTheDocument();
-      });
     });
   });
 });

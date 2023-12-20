@@ -34,9 +34,6 @@ export function Header() {
         ) : (
           <ul>
             <li className="info-user">
-              {/* <Link to="/sign-in"></Link> */}
-              {/* <img src="https://placehold.co/25x25/webp" title="Icono user" /> */}
-
               <Link to="/my-profile">
                 <i className="fa-regular fa-user"></i>
                 {loggedUser!.userName}

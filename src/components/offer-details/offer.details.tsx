@@ -73,7 +73,6 @@ export function OfferDetails() {
               </div>
               <div className="description">{description}</div>
               <div className="author">
-                {/* <img src="https://placehold.co/25x25/webp" alt="author" /> */}
                 <i className="fa-solid fa-user-tag"></i>
                 <p>{offerItem.author.userName}</p>
               </div>

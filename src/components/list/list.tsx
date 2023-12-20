@@ -2,15 +2,8 @@ import { OfferCard } from '../offer/offer';
 import { useOffers } from '../../hooks/use.offers';
 
 import './list.scss';
-//import { useEffect } from 'react';
 
 export function List() {
-  // const { offers, loadOffers } = useOffers();
-
-  // useEffect(() => {
-  //   loadOffers();
-  // }, [loadOffers]);
-
   const { offers } = useOffers();
 
   return (

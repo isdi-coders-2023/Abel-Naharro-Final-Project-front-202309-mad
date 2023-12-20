@@ -1,14 +1,12 @@
 import { SyntheticEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useOffers } from '../../hooks/use.offers';
-// import { useUsers } from '../../hooks/use.users';
 import './form.create.scss';
 
 export function FormCreate() {
   const navigate = useNavigate();
 
   const { createOffer } = useOffers();
-  // const { loggedUser } = useUsers();
   const [isCreate, setIsCreate] = useState(false);
 
   const handleSubmit = (event: SyntheticEvent) => {

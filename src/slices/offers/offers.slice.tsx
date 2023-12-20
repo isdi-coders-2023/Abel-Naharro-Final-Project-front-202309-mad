@@ -61,7 +61,6 @@ const offersSlice = createSlice({
       return state;
     });
 
-    //byId
     builder.addCase(loadOfferByIdThunk.pending, (state: OffersState) => {
       state.stateOption = 'loading';
       return state;

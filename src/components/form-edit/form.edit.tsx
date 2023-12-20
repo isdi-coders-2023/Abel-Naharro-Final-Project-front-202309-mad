@@ -2,21 +2,15 @@ import { SyntheticEvent, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Offer } from '../../model/offer';
 import { useOffers } from '../../hooks/use.offers';
-// import { useUsers } from '../../hooks/use.users';
 import './form.edit.scss';
 
 export function FormEdit() {
   const { id } = useParams();
   const { offers, updateOffer } = useOffers();
-  // const { loggedUser } = useUsers();
   const navigate = useNavigate();
   const [isEdit, setIsEdit] = useState(false);
 
   const offerItem = offers.find((item: Offer) => item.id === id) as Offer;
-
-  if (!offerItem) {
-    throw new Error(`Offer with id ${id} not found`);
-  }
 
   const handleSubmitEdit = (event: SyntheticEvent) => {
     event.preventDefault();
@@ -87,10 +81,6 @@ export function FormEdit() {
               defaultValue={offerItem.offerPrice}
             />
           </div>
-          {/* <div>
-            <label htmlFor="coupon-needed">Coupon needed?</label>
-            <input type="checkbox" id="coupon-needed" name="coupon-needed" />
-          </div> */}
           <div>
             <label htmlFor="coupon">Coupon</label>
             <input
@@ -124,14 +114,6 @@ export function FormEdit() {
               <option value="others">Others</option>
             </select>
           </div>
-          {/* <div>
-            <label htmlFor="date-to-start">Date start offer</label>
-            <input type="date" id="date-to-start" name="dateToStart" required />
-          </div>
-          <div>
-            <label htmlFor="date-to-end">Date end offer</label>
-            <input type="date" id="date-to-end" name="dateToEnd" required />
-          </div> */}
 
           {isEdit ? (
             <div className="alert-confirm-delete">

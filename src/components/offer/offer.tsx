@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { Offer } from '../../model/offer';
-// import { makeImageURL } from '../../services/cloudinary';
 import './offer.scss';
 
 type Props = {
@@ -29,13 +28,6 @@ export function OfferCard({ offerItem }: Props) {
   if (description.length > 150) {
     description = description.substring(0, 150) + '...';
   }
-
-  // const mobileOfferImg =
-  //   offerItem?.image?.publicId && makeImageURL(offerItem.image.publicId, 160);
-  // const desktopOfferImg =
-  //   offerItem?.image?.publicId && makeImageURL(offerItem.image.publicId, 205);
-  // const desktopBigOfferImg =
-  //   offerItem?.image?.publicId && makeImageURL(offerItem.image.publicId, 255);
 
   const updatedSkin = {
     ...offerItem,
@@ -77,7 +69,6 @@ export function OfferCard({ offerItem }: Props) {
         </div>
         <div className="description">{description}</div>
         <div className="author">
-          {/* <img src="https://placehold.co/25x25/webp" alt="author" /> */}
           <i className="fa-solid fa-user-tag"></i>
           <p>{offerItem.author.userName}</p>
         </div>

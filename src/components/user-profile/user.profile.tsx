@@ -1,19 +1,13 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useOffers } from '../../hooks/use.offers';
 import { useUsers } from '../../hooks/use.users';
-//import { Offer } from '../../model/offer';
 import './user.profile.scss';
 import { SyntheticEvent } from 'react';
 
 export function UserProfile() {
   const { logout, loggedUser } = useUsers();
-  // const { offers, loadOffers } = useOffers();
   const { offers } = useOffers();
   const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   loadOffers();
-  // }, [loadOffers]);
 
   const handleClick = (event: SyntheticEvent) => {
     event.preventDefault();
