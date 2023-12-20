@@ -18,12 +18,10 @@ export function FormCreate() {
     createOffer(formData);
     setIsCreate(true);
 
-    if (isCreate) {
-      setTimeout(() => {
-        setIsCreate(false);
-        navigate('/my-profile');
-      }, 2000);
-    }
+    setTimeout(() => {
+      setIsCreate(false);
+      navigate('/');
+    }, 2000);
   };
 
   return (
@@ -89,7 +87,7 @@ export function FormCreate() {
           </div> */}
 
           {isCreate ? (
-            <div className="alert-confirm-delete">
+            <div className="alert-confirm-create">
               <p>Offer has been successfully shared</p>
             </div>
           ) : (

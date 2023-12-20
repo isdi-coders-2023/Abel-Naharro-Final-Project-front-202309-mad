@@ -16,6 +16,19 @@
       font-size: 1rem;
     }
 
+    .alert-confirm-delete {
+      border: 1px solid #b9f5b9;
+      border-radius: 1rem;
+      padding: 1rem;
+      background: #edffed;
+      font-size: 0.8rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      font-weight: 600;
+    }
+
     .btn-delete {
       margin-top: 1rem;
       padding: 0.5rem 2rem;

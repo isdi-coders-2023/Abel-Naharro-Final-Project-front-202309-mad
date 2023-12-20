@@ -34,7 +34,7 @@ export function FormLogin() {
       <div className="login-card">
         <h2>
           Welcome to <br />
-          Todotechofertas
+          Todotecnofertas
         </h2>
         <form name="login-form" onSubmit={handleSubmit}>
           <div>

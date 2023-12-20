@@ -100,7 +100,7 @@ export function OfferDetails() {
                   </>
                 ) : (
                   <div className="info-offer-not-login">
-                    Sign in to see the offer
+                    👉 Sign in to see the offer
                   </div>
                 )}
               </div>

@@ -21,12 +21,10 @@ export function FormEdit() {
     updateOffer(offerItem.id, formData);
     setIsEdit(true);
 
-    if (isEdit) {
-      setTimeout(() => {
-        setIsEdit(false);
-        navigate('/my-profile');
-      }, 2000);
-    }
+    setTimeout(() => {
+      setIsEdit(false);
+      navigate('/');
+    }, 2000);
   };
 
   return (
@@ -34,17 +32,17 @@ export function FormEdit() {
       <div className="edit-card">
         <h2>Edit offer</h2>
         <form name="edit-form" id="edit-form" onSubmit={handleSubmitEdit}>
-          <div>
+          <div className="image-edit">
             <img
               src={offerItem.image.cloudinaryURL}
               alt="offer image"
               width={100}
             />
           </div>
-          <div>
+          {/* <div>
             <label htmlFor="image-file">Image</label>
             <input type="file" id="image-file" name="image" />
-          </div>
+          </div> */}
           <div>
             <label htmlFor="title">Title</label>
             <input
@@ -116,7 +114,7 @@ export function FormEdit() {
           </div>
 
           {isEdit ? (
-            <div className="alert-confirm-delete">
+            <div className="alert-confirm-edit">
               <p>The offer has been edited correctly</p>
             </div>
           ) : (
