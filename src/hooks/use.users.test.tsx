@@ -4,7 +4,7 @@ import { userEvent } from '@testing-library/user-event';
 import { Provider, useDispatch } from 'react-redux';
 import { UsersRepo } from '../services/api.repo.users';
 import { LoginUser, User } from '../model/user';
-//import { LocalStorage } from '../../services/local.storage';
+import { LocalStorage } from '../services/local.storage';
 import { appStore } from '../store/store';
 
 jest.mock('react-redux', () => ({
@@ -53,13 +53,13 @@ describe('Given useUsers Hook', () => {
     });
   });
 
-  // describe('When we click button loginWithToken', () => {
-  //   test('Then the dispacht should have been called', async () => {
-  //     LocalStorage.prototype.get = jest.fn().mockReturnValue('test');
-  //     await userEvent.click(elements[2]);
-  //     expect(useDispatch()).toHaveBeenCalled();
-  //   });
-  // });
+  describe('When we click button loginWithToken', () => {
+    test('Then the dispacht should have been called', async () => {
+      LocalStorage.prototype.get = jest.fn().mockReturnValue('test');
+      await userEvent.click(elements[2]);
+      expect(useDispatch()).toHaveBeenCalled();
+    });
+  });
 
   describe('When we click button register ', () => {
     test('Then the dispacht should have been called', async () => {
