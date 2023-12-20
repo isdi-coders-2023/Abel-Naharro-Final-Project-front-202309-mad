@@ -126,7 +126,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            align-items: center;
             font-weight: 600;
             padding: 0.5rem 4rem;
             border-radius: 2rem;
@@ -148,11 +147,9 @@
           justify-content: flex-end;
           align-items: center;
           gap: 1rem;
-          flex-direction: row;
 
           .text-coupon {
             border: 1px solid $grey-base;
-            border-radius: 1rem;
             font-weight: 600;
             padding: 0.5rem 1rem;
             border-radius: 2rem;
@@ -195,7 +192,4 @@
       }
     }
   }
-}
-
-@media (max-width: 715px) {
 }
