@@ -49,3 +49,18 @@ footer {
     }
   }
 }
+
+@media (max-width: 485px) {
+  footer {
+    p {
+      font-size: 0.7rem;
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      .link-linkedin,
+      .link-github {
+        padding: 0.1rem 0.5rem;
+      }
+    }
+  }
+}

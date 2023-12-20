@@ -1,14 +1,50 @@
+import { Link } from 'react-router-dom';
+import { Offer } from '../../model/offer';
 import './offer.scss';
 
-export function Offer() {
+type Props = {
+  offerItem: Offer;
+};
+
+export function OfferCard({ offerItem }: Props) {
+  const date = new Date(offerItem.createdAt);
+  const formattedDateOfCreated = date.toLocaleString('es-ES', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+  });
+
+  const differencePrice = offerItem.offerPrice - offerItem.regularPrice;
+  const percentageDiscount = (
+    (differencePrice / offerItem.regularPrice) *
+    100
+  ).toFixed(0);
+
+  const urlOffer = new URL(offerItem.offerURL);
+  const hostNameOffer = urlOffer.host;
+  const cleanHostNameOffer = hostNameOffer.replace('www.', '');
+
+  let description = offerItem.description;
+  if (description.length > 150) {
+    description = description.substring(0, 150) + '...';
+  }
+
+  const updatedSkin = {
+    ...offerItem,
+    image: {
+      ...offerItem.image,
+      cloudinaryURL: offerItem.image.cloudinaryURL!.replace('http', 'https'),
+    },
+  };
+
   return (
     <section className="card-offer" role="contentinfo">
       <div className="content-image">
-        <img src="https://placehold.co/200x200/webp" alt="offer image" />
+        <img src={updatedSkin.image.cloudinaryURL} alt="offer image" />
       </div>
       <div className="content-info">
         <div className="content-info-header">
-          <div className="bottons-vote">
+          <div className="buttons-vote">
             <button className="btn-vote-down" title="vote-down">
               <i className="fa-regular fa-thumbs-down"></i>
             </button>
@@ -19,29 +55,27 @@ export function Offer() {
           </div>
           <div className="created-at">
             <p>
-              <i className="fa-regular fa-calendar-days"></i> 03/02/2023
+              <i className="fa-regular fa-calendar-days"></i>{' '}
+              {formattedDateOfCreated}
             </p>
           </div>
         </div>
-        <div className="title">Redmi Pad SE, 4 GB + 128 GB</div>
+        <div className="title">{offerItem.title}</div>
         <div className="subtitle">
-          <span className="offer-price">144,45€</span>{' '}
-          <span className="regular-price">199,99€</span>
-          <span className="discount">(-28%)</span>
-          <span className="brand-store">mi.com</span>
+          <span className="offer-price">{offerItem.offerPrice}€</span>{' '}
+          <span className="regular-price">{offerItem.regularPrice}€</span>
+          <span className="discount">({percentageDiscount}%)</span>
+          <span className="brand-store">{cleanHostNameOffer}</span>
         </div>
-        <div className="description">
-          La Redmi Pad SE es una tableta de 11 pulgadas con una pantalla FHD+ de
-          11" con 16,7 millones de colores y una tasa de refresco ...
-        </div>
+        <div className="description">{description}</div>
         <div className="author">
-          <img src="https://placehold.co/25x25/webp" alt="author" />
-          <p>Name</p>
+          <i className="fa-solid fa-user-tag"></i>
+          <p>{offerItem.author.userName}</p>
         </div>
         <div className="offer-link">
-          <a href="#">
+          <Link className="button-share" to={`offer/` + offerItem.id}>
             Go to Offer <i className="fa-solid fa-up-right-from-square"></i>
-          </a>
+          </Link>
         </div>
       </div>
     </section>

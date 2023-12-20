@@ -2,7 +2,7 @@
 
 .sub-header {
   background: $grey-four;
-  padding: 1.5rem;
+  padding: 1.5rem 0rem;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -10,6 +10,10 @@
 
   .control-scroll-category {
     color: $white-base;
+    cursor: pointer;
+    width: 3rem;
+    height: 3rem;
+    background: none;
   }
 
   ul {
@@ -19,6 +23,19 @@
     justify-content: flex-start;
     list-style: none;
     gap: 1rem;
+
+    width: 100%;
+    margin-left: 1rem;
+    margin-right: 1rem;
+
+    overflow: auto;
+    white-space: nowrap;
+    overflow-y: hidden;
+    height: 4rem;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
 
     li {
       a {
@@ -38,6 +55,19 @@
 
         &:hover {
           background: #fff3;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 715px) {
+  .sub-header {
+    padding: 0.1rem 0rem;
+    .category-list {
+      li {
+        a {
+          padding: 5px 20px;
         }
       }
     }

@@ -1,32 +1,51 @@
+import { Link } from 'react-router-dom';
 import './header.scss';
+import { useUsers } from '../../hooks/use.users';
 
 export function Header() {
+  const { loggedUser } = useUsers();
+
   return (
     <header>
       <div className="header-logo">
-        <img src="/img/icon.png" title="Icono Todotecnofertas" />
+        <img
+          src="https://res.cloudinary.com/dm53t8asy/image/upload/v1703009349/todotecnofertas/icon_dwdugi.png"
+          title="Icono Todotecnofertas"
+        />
         <h1>
           Todo<span>tecnofertas</span>
         </h1>
       </div>
       <nav className="header-nav">
-        <ul>
-          <li>
-            <a href="#">Sign Up</a>
-          </li>
-          <li>
-            <a href="#">Sign In</a>
-          </li>
-          <li>
-            <a href="#" className="button-share">
-              + Share
-            </a>
-          </li>
-        </ul>
-        {/* <form>
-          <input type="search" name="q" placeholder="Buscar" />
-          <input type="submit" defaultValue="¡Vamos!" />
-        </form> */}
+        {!loggedUser ? (
+          <ul>
+            <li>
+              <Link to="/sign-up">Sign Up</Link>
+            </li>
+            <li>
+              <Link to="/sign-in">Sign In</Link>
+            </li>
+            <li>
+              <Link className="button-share" to="/sign-in">
+                + Share
+              </Link>
+            </li>
+          </ul>
+        ) : (
+          <ul>
+            <li className="info-user">
+              <Link to="/my-profile">
+                <i className="fa-regular fa-user"></i>
+                {loggedUser!.userName}
+              </Link>
+            </li>
+            <li>
+              <Link className="button-share" to="/offer/share">
+                + Share
+              </Link>
+            </li>
+          </ul>
+        )}
       </nav>
     </header>
   );

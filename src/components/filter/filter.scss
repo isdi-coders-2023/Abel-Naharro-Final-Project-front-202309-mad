@@ -16,6 +16,7 @@
 
     h2 {
       color: $grey-three;
+      font-size: 1.5rem;
     }
 
     ul {
@@ -25,6 +26,7 @@
       align-items: center;
       justify-content: flex-start;
       gap: 2rem;
+
       li {
         a {
           font-weight: 500;
@@ -45,8 +47,31 @@
             right: -4px;
             top: calc(50% - 12px);
             background-color: #cac6c8;
-            // transition: background-color 0.25s ease-out;
           }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 715px) {
+  .filter {
+    padding: 0.7rem 1rem;
+
+    .container {
+      h2 {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 370px) {
+  .filter {
+    .container {
+      ul {
+        li {
+          font-size: 0.7rem;
         }
       }
     }
