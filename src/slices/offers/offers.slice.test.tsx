@@ -15,6 +15,19 @@ describe('Given offersReducer', () => {
     });
   });
 
+  describe('When offers/setFilteredByCategory action is dispacth', () => {
+    test('Then the new state will be returned with filteredOffersByCategory set', () => {
+      const mockOfferItem = [] as unknown as Offer[];
+      const action = {
+        type: 'offers/setFilteredByCategory',
+        payload: mockOfferItem,
+      };
+      const state: OffersState = {} as OffersState;
+      const result = offersReducer(state, action);
+      expect(result.filteredOffersByCategory).toBe(mockOfferItem);
+    });
+  });
+
   describe('When offers/load/pending action is dispacth', () => {
     test('Then the new state will be returned with stateOption set to "loading"', () => {
       const action = { type: 'load/pending' };
@@ -32,6 +45,7 @@ describe('Given offersReducer', () => {
       expect(result.stateOption).toBe('error');
     });
   });
+
   describe('When offers/load/fulfilled action is dispacth', () => {
     test('Then the new state will be returned with stateOption set to "idle"', () => {
       const action = {
