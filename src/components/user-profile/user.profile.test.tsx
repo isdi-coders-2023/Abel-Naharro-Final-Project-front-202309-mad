@@ -16,9 +16,33 @@ describe('Given UserProfile component', () => {
         </BrowserRouter>
       );
     });
+
     test('Then it should be in the document', () => {
       const element = screen.getByRole('contentinfo');
       expect(element).toBeInTheDocument();
+    });
+
+    test('Then it should display user data', () => {
+      const nameElement = screen.getByText(/Name:/i);
+      const emailElement = screen.getByText(/Email:/i);
+
+      expect(nameElement).toBeInTheDocument();
+      expect(emailElement).toBeInTheDocument();
+    });
+
+    test('Then it should display user offers', () => {
+      const offersHeaderElement = screen.getByText(/My offers/i);
+      expect(offersHeaderElement).toBeInTheDocument();
+
+      const offersListElement = screen.getByRole('list');
+      expect(offersListElement).toBeInTheDocument();
+    });
+
+    test('Then it should display logout button', () => {
+      const logoutButtonElement = screen.getByRole('button', {
+        name: /Log Out/i,
+      });
+      expect(logoutButtonElement).toBeInTheDocument();
     });
   });
 });
