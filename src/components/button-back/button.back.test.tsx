@@ -17,9 +17,20 @@ describe('Given BackToHome component', () => {
         </Provider>
       );
     });
+
     test('renders BackToHome with link', () => {
       const element = screen.getByRole('link');
       expect(element).toBeInTheDocument();
+    });
+
+    test('renders BackToHome with correct text', () => {
+      const element = screen.getByText('Back to home');
+      expect(element).toBeInTheDocument();
+    });
+
+    test('renders BackToHome with correct route', () => {
+      const element = screen.getByRole('link');
+      expect(element).toHaveAttribute('href', '/');
     });
   });
 });
